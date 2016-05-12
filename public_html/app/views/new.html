@@ -1,0 +1,110 @@
+<h2>Registro de smartphone</h2>
+<form class="form-horizontal" role="form" id='formulario_login'>
+
+    <div class="form-group">
+      <label class="control-label col-md-2" for="modelName">Modelo:</label>
+      <div class="col-md-10">          
+        <input type="text" class="form-control" required ng-model="phoneData.modelName" id="modelName" placeholder="Introduzca modelo">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-md-2" for="brandName">Marca:</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" required ng-model="phoneData.brandName" id="brandName" placeholder="Introduzca marca">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="releaseDate">Fecha de lanzamiento</label>
+        <div class="col-md-10">          
+          <input type="date" class="form-control" ng-model="phoneData.releaseDate" id="releaseDate">
+        </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-md-2" for="screenSize">Tama&nacuteo de pantalla:</label>
+      <div class="col-md-10">
+        <input type="number" class="form-control" required ng-model="phoneData.screenSize" id="screenSize" placeholder="Introduzca tamaño de pantalla">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="resolution">Resolucion de pantalla:</label>
+      <div class="col-md-5">
+        <input type="number" class="form-control" required ng-model="phoneData.resolutionX" id="resolution" placeholder="Lineas">
+      </div>
+      <div class="col-md-5">
+        <input type="number" class="form-control" required ng-model="phoneData.resolutionY" id="resolution" placeholder="Columnas">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="rom">ROM:</label>
+      <div class="col-md-10">
+        <input type="number" class="form-control" required ng-model="phoneData.rom" id="rom" placeholder="Introduzca cantidad de ROM">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="ram">RAM:</label>
+      <div class="col-md-10">
+        <input type="number" class="form-control" required ng-model="phoneData.ram" id="ram" placeholder="Introduzca cantidad de RAM">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="battery">Bater&iacute;a:</label>
+      <div class="col-md-10">
+        <input type="number" class="form-control" required ng-model="phoneData.battery" id="battery" placeholder="Introduzca cantidad de bateria">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="weight">Peso:</label>
+      <div class="col-md-10">
+        <input type="number" class="form-control" required ng-model="phoneData.weight" id="weight" placeholder="Introduzca peso">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="dimensions">Dimensiones:</label>
+      <div class="col-md-3">
+        <input type="number" class="form-control" required ng-model="phoneData.height" id="dimensions" placeholder="Altura">
+      </div>
+      <div class="col-md-3">
+        <input type="number" class="form-control" required ng-model="phoneData.width" id="dimensions" placeholder="Anchura">
+      </div>
+      <div class="col-md-3">
+        <input type="number" class="form-control" required ng-model="phoneData.thickness" id="dimensions" placeholder="Grosor">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="gps">GPS:</label>
+      <div class="col-md-1">
+        <input type="checkbox" class="form-control" ng-model="phoneData.gps" id="gps">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="bluetooth">Bluetooth</label>
+      <div class="col-md-1">
+        <input type="checkbox" class="form-control" ng-model="phoneData.bluetooth" id="bluetooth">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2" for="nfc">NFC:</label>
+      <div class="col-md-1">
+        <input type="checkbox" class="form-control" ng-model="phoneData.nfc" id="nfc">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" id='registrar' value="Registrar" ng-click="register()">
+        </div>
+    </div>
+
+</form>
