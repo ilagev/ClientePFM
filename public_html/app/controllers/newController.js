@@ -1,5 +1,5 @@
 angular.module('sc').controller('newController',
-    function($scope, $http) {
+    function($scope, $http, RESOURCES) {
         $scope.phoneData = {
             modelName : "",
             brandName : "",
@@ -21,6 +21,13 @@ angular.module('sc').controller('newController',
         
         $scope.register = function () {
             console.log("Phone model = " + JSON.stringify($scope.phoneData));
+            console.log(RESOURCES.BASE + RESOURCES.SMARTPHONES);
+            
+            var url = RESOURCES.BASE + RESOURCES.SMARTPHONES;
+            $http.post(url, $scope.phoneData)
+                .success(function(data) {
+                    console.log(data);
+            });
         };
     }
 );
