@@ -14,7 +14,15 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
       <li><a href="#new">Nuevo</a></li>
-      <li><a href="#search">Buscar</a></li>
+      <!--<li><a href="#search">Buscar</a></li>-->
+      <li ng-controller="searchController">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" required ng-model="name" placeholder="Buscar smartphone">
+        </div>
+        <button type="submit" ng-click="search()" class="btn btn-default">Buscar</button>
+      </form>
+      </li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown">
           Menú de usuario<b class="caret"></b>
