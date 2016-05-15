@@ -7,7 +7,7 @@ angular.module('sc').config(function($routeProvider, $locationProvider) {
         })
         .when('/search', {
             templateUrl : 'app/views/search.html',
-            controller  : 'searchController'
+            controller  : 'searchResultController'
         })
         .otherwise({
             redirectTo : '/'

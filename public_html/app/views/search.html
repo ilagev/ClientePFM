@@ -1,7 +1,19 @@
-<h2>Busqueda de smartphone</h2>
-<form class="navbar-form navbar-left" role="search">
-    <div class="form-group">
-        <input type="text" class="form-control" required ng-model="name" placeholder="Modelo de telefono">
-    </div>
-    <button type="submit" ng-click="search()" class="btn btn-default">Buscar</button>
-</form>
+<div class="container" ng-controller="searchResultController">
+      <h2>Resultados</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Ver ficha</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="smartphone in smartphones">
+          <tr>
+            <td>{{smartphone.brandName}}</td>
+            <td>{{smartphone.modelName}}</td>
+            <td><a href="/smartphone/{{smartphone.id}}">Ver ficha</a></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
