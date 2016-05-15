@@ -1,4 +1,4 @@
-angular.module('sc').config(function($routeProvider, $locationProvider) {
+angular.module('sc').config(function($routeProvider) {
 
     $routeProvider
         .when('/new', {
@@ -8,6 +8,10 @@ angular.module('sc').config(function($routeProvider, $locationProvider) {
         .when('/search', {
             templateUrl : 'app/views/search.html',
             controller  : 'searchResultController'
+        })
+        .when('/smartphone/:id',{
+            templateUrl : 'app/views/smartphone.html',
+            controller  : 'smartphoneController'
         })
         .otherwise({
             redirectTo : '/'
