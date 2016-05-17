@@ -1,17 +1,17 @@
 <h2>Registro de smartphone</h2>
 <form class="form-horizontal" role="form" id='formulario_login'>
+    
+    <div class="form-group">
+      <label class="control-label col-md-2" for="brandName">Marca:</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" required ng-model="phoneData.brandName" id="brandName" placeholder="Introduzca marca">
+      </div>
+    </div>
 
     <div class="form-group">
       <label class="control-label col-md-2" for="modelName">Modelo:</label>
       <div class="col-md-10">          
         <input type="text" class="form-control" required ng-model="phoneData.modelName" id="modelName" placeholder="Introduzca modelo">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label col-md-2" for="brandName">Marca:</label>
-      <div class="col-md-10">
-        <input type="text" class="form-control" required ng-model="phoneData.brandName" id="brandName" placeholder="Introduzca marca">
       </div>
     </div>
     

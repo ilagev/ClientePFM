@@ -10,11 +10,13 @@
     <body>
         <div ng-include="'app/views/navbar.html'"></div>
         <div ng-view></div>
+        <input class="typeahead" type="text" id="index">
         
         <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.7/angular.min.js"></script>
   	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.3/angular-route.js"></script>
+        <script src="typeahead.bundle.js"></script>
         <script src="app/app.js"></script>
         <script src="app/config/routing.js"></script>
         <script src="app/config/const.js"></script>
@@ -23,5 +25,6 @@
         <script src="app/controllers/searchController.js"></script>
         <script src="app/controllers/searchResultController.js"></script>
         <script src="app/controllers/smartphoneController.js"></script>
+        <script src="app/controllers/searchPredictor.js"></script>
     </body>
 </html>

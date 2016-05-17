@@ -6,7 +6,7 @@ angular.module('sc').controller('searchController',
             console.log("Model name = " + $scope.name);
             
             $scope.smartphones = [];
-            
+
             var url = RESOURCES.BASE + RESOURCES.SMARTPHONES + "?query=" + $scope.name;
             $http.get(url)
                 .then(function(response) {

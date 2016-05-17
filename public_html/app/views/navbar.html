@@ -18,7 +18,7 @@
       <li ng-controller="searchController">
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" required ng-model="name" placeholder="Buscar smartphone">
+          <input type="text" required ng-model="name" class="typeahead" id="searchbar" placeholder="Buscar smartphone">
         </div>
         <button class="button button-icon" ng-click="search()">Buscar</button>
       </form>
