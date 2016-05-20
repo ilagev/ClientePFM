@@ -1,5 +1,5 @@
 angular.module('sc').controller('newController',
-    function($scope, $http, RESOURCES, $location) {
+    function($scope, $http, RESOURCES, $window) {
         $scope.phoneData = {
             modelName : "",
             brandName : "",
@@ -23,7 +23,7 @@ angular.module('sc').controller('newController',
             var url = RESOURCES.BASE + RESOURCES.SMARTPHONES;
             $http.post(url, $scope.phoneData)
                 .success(function(data) {
-                    $location.path("/smartphone/" + data.id);
+                    $window.location.href = "#smartphone/" + data.id;
             });
         };
     }

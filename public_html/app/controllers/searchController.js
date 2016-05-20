@@ -1,5 +1,5 @@
 angular.module('sc').controller('searchController',
-    function($scope, $http, RESOURCES, $location, smartphoneService) {
+    function($scope, $http, RESOURCES, $window, smartphoneService) {
         $scope.name = "";
         
         $scope.search = function () {
@@ -9,7 +9,7 @@ angular.module('sc').controller('searchController',
             $http.get(url)
                 .then(function(response) {
                     smartphoneService.addSmartphones(response.data);
-                    $location.path("/search");
+                    $window.location.href = "#search";
                 });
         };
     }

@@ -1,0 +1,9 @@
+.tt-suggestion {
+  font-size: 15px;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+}

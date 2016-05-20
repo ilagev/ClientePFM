@@ -1,4 +1,4 @@
-angular.module('sc').directive('autoComplete', function(RESOURCES) {
+angular.module('sc').directive('autoComplete', function(RESOURCES, $window) {
         
     var engine = new Bloodhound({
         datumTokenizer: function(datum) {
@@ -11,7 +11,8 @@ angular.module('sc').directive('autoComplete', function(RESOURCES) {
         transform: function(response) {
             return $.map(response, function(smartphone) {
                return {
-                    value: smartphone.brandName + " " + smartphone.modelName
+                    value: smartphone.brandName + " " + smartphone.modelName,
+                    id: smartphone.id
                };
             });
         }
@@ -19,8 +20,20 @@ angular.module('sc').directive('autoComplete', function(RESOURCES) {
     
     return function(scope, element) {
         element.typeahead(null, {
+            minLength: 2,
+            highlight: true,
             display: 'value',
-            source: engine
-          });
+            source: engine,
+            templates: {
+                empty: function(data) {
+                    return '<p>No results...</p>';
+                },
+                suggestion: function(data) {
+                    return '<p><strong>' + data.value + '</strong></p>';
+                }
+            }
+        }).on('typeahead:select', function(ev, suggestion) {
+            $window.location.href= "#smartphone/" + suggestion.id;
+        });
     };
 });
