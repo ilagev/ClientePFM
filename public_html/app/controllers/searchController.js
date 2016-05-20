@@ -3,8 +3,6 @@ angular.module('sc').controller('searchController',
         $scope.name = "";
         
         $scope.search = function () {
-            console.log("Model name = " + $scope.name);
-            
             $scope.smartphones = [];
 
             var url = RESOURCES.BASE + RESOURCES.SMARTPHONES + "?query=" + $scope.name;
