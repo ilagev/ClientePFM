@@ -1,0 +1,46 @@
+<div class="container">
+    <center>
+        <label for="s1">Smartphone 1</label>
+        <input type="text" required ng-model="names1" id="s1" auto-complete="nr" class="form-control"/>
+        <button class="button button-icon" ng-click="compare()">Comparar</button>
+        <label for="s2">Smartphone 2</label>
+        <input type="text" required ng-model="names2" id="s2" auto-complete="nr" class="form-control"/>
+    </center>
+</div>
+
+    <table class="table" id="comparisonTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>{{smartphone1.brandName}} {{smartphone1.modelName}}</th>
+            <th>{{smartphone2.brandName}} {{smartphone2.modelName}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RAM</td>
+            <td>{{smartphone1.ram}}</td>
+            <td>{{smartphone2.ram}}</td>
+          </tr>
+          <tr>
+            <td>ROM</td>
+            <td>{{smartphone1.rom}}</td>
+            <td>{{smartphone2.rom}}</td>
+          </tr>
+          <tr>
+            <td>Screen size</td>
+            <td>{{smartphone1.screenSize}}</td>
+            <td>{{smartphone2.screenSize}}</td>
+          </tr>
+          <tr>
+            <td>Resolucion</td>
+            <td>{{smartphone1.resolutionX}} X {{smartphone1.resolutionY}}</td>
+            <td>{{smartphone2.resolutionX}} X {{smartphone2.resolutionY}}</td>
+          </tr>
+          <tr>
+            <td>Battery</td>
+            <td>{{smartphone1.battery}}</td>
+            <td>{{smartphone2.battery}}</td>
+          </tr>
+        </tbody>
+      </table>

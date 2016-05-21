@@ -14,13 +14,11 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
       <li><a href="#new">Nuevo</a></li>
-      <!--<li><a href="#search">Buscar</a></li>-->
-      <li ng-controller="searchController">
+      <li>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" required ng-model="name" auto-complete id="searchbar" placeholder="Buscar smartphone">
+          <input type="text" class="form-control" required ng-model="name" auto-complete="r" id="searchbar" placeholder="Buscar smartphone">
         </div>
-        <button class="button button-icon" ng-click="search()">Buscar</button>
       </form>
       </li>
       <li class="dropdown">

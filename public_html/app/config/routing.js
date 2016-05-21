@@ -5,15 +5,15 @@ angular.module('sc').config(function($routeProvider) {
             templateUrl : 'app/views/new.html',
             controller  : 'newController'
         })
-        .when('/search', {
-            templateUrl : 'app/views/search.html',
-            controller  : 'searchResultController'
-        })
         .when('/smartphone/:id',{
             templateUrl : 'app/views/smartphone.html',
             controller  : 'smartphoneController'
         })
+        .when('/compare',{
+            templateUrl : 'app/views/compare.html',
+            controller  : 'compareController'
+        })
         .otherwise({
-            redirectTo : '/'
+            redirectTo : '/compare'
         });
 });
