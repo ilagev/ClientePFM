@@ -3,7 +3,9 @@ angular.module('sc')
         var smartphoneList = [];
 
         var addSmartphone = function(obj) {
-            smartphoneList.push(obj);
+            if (!(obj in smartphoneList)) {
+                smartphoneList.push(obj);
+            }
         };
 
         var getSmartphones = function(){
