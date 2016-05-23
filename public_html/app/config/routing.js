@@ -13,6 +13,10 @@ angular.module('sc').config(function($routeProvider) {
             templateUrl : 'app/views/compare.html',
             controller  : 'compareController'
         })
+        .when('/edit/:id',{
+            templateUrl : 'app/views/edit.html',
+            controller  : 'editController'
+        })
         .otherwise({
             redirectTo : '/compare'
         });

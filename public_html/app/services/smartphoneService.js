@@ -1,5 +1,5 @@
 angular.module('sc')
-        .service('smartphoneService', function () {
+        .service('smartphoneService', function ($location) {
             var smartphoneLeft, smartphoneRight;
     
             var setSmartphoneLeft = function(s) {
@@ -17,11 +17,17 @@ angular.module('sc')
             var getSmartphoneRight = function() {
                 return smartphoneRight;
             };
+            
+            var getId = function() {
+                var url = $location.path().split("/");
+                return url[url.length - 1];
+            };
 
             return {
                 setSmartphoneLeft: setSmartphoneLeft,
                 setSmartphoneRight: setSmartphoneRight,
                 getSmartphoneLeft: getSmartphoneLeft,
-                getSmartphoneRight: getSmartphoneRight
+                getSmartphoneRight: getSmartphoneRight,
+                getUrlSmartphoneId: getId
             };
         });
