@@ -1,10 +1,10 @@
 <div class="container">
     <center>
         <label for="s1">Smartphone 1</label>
-        <input type="text" required ng-model="names1" id="s1" auto-complete="nr" class="form-control"/>
+        <input type="text" required ng-model="names1" id="s1" auto-complete="left" class="form-control" placeholder="Marca y modelo"/>
         <button class="button button-icon" ng-click="compare()">Comparar</button>
         <label for="s2">Smartphone 2</label>
-        <input type="text" required ng-model="names2" id="s2" auto-complete="nr" class="form-control"/>
+        <input type="text" required ng-model="names2" id="s2" auto-complete="right" class="form-control"  placeholder="Marca y modelo"/>
     </center>
 </div>
 
@@ -12,35 +12,60 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>{{smartphone1.brandName}} {{smartphone1.modelName}}</th>
-            <th>{{smartphone2.brandName}} {{smartphone2.modelName}}</th>
+            <th>{{smartphoneLeft.brandName}} {{smartphoneLeft.modelName}}</th>
+            <th>{{smartphoneRight.brandName}} {{smartphoneRight.modelName}}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>RAM</td>
-            <td>{{smartphone1.ram}}</td>
-            <td>{{smartphone2.ram}}</td>
+            <td>{{smartphoneLeft.ram}} GB</td>
+            <td ng-style="{ 'background-color': compareRAM() }">{{smartphoneRight.ram}} GB</td>
           </tr>
           <tr>
             <td>ROM</td>
-            <td>{{smartphone1.rom}}</td>
-            <td>{{smartphone2.rom}}</td>
+            <td>{{smartphoneLeft.rom}} GB</td>
+            <td ng-style="{ 'background-color': compareROM() }">{{smartphoneRight.rom}} GB</td>
           </tr>
           <tr>
             <td>Screen size</td>
-            <td>{{smartphone1.screenSize}}</td>
-            <td>{{smartphone2.screenSize}}</td>
+            <td>{{smartphoneLeft.screenSize}}'</td>
+            <td ng-style="{ 'background-color': compareScreenSize() }">{{smartphoneRight.screenSize}}'</td>
           </tr>
           <tr>
             <td>Resolucion</td>
-            <td>{{smartphone1.resolutionX}} X {{smartphone1.resolutionY}}</td>
-            <td>{{smartphone2.resolutionX}} X {{smartphone2.resolutionY}}</td>
+            <td>{{smartphoneLeft.resolutionX}}px X {{smartphoneLeft.resolutionY}}px</td>
+            <td ng-style="{ 'background-color': compareResolution() }">{{smartphoneRight.resolutionX}}px X {{smartphoneRight.resolutionY}}px</td>
           </tr>
           <tr>
             <td>Battery</td>
-            <td>{{smartphone1.battery}}</td>
-            <td>{{smartphone2.battery}}</td>
+            <td>{{smartphoneLeft.battery}} mAh</td>
+            <td ng-style="{ 'background-color': compareBattery() }">{{smartphoneRight.battery}} mAh</td>
+          </tr>
+          <tr>
+            <td>Size</td>
+            <td>{{smartphoneLeft.height}}mm X {{smartphoneLeft.width}}mm X {{smartphoneLeft.thickness}}mm</td>
+            <td ng-style="{ 'background-color': compareSize() }">{{smartphoneRight.height}}mm X {{smartphoneRight.width}}mm X {{smartphoneRight.thickness}}mm</td>
+          </tr>
+          <tr>
+            <td>Weight</td>
+            <td>{{smartphoneLeft.weight}} gr</td>
+            <td ng-style="{ 'background-color': compareWeight() }">{{smartphoneRight.weight}}gr</td>
+          </tr>
+          <tr>
+            <td>GPS</td>
+            <td>{{smartphoneLeft.battery}}</td>
+            <td ng-style="{ 'background-color': compareBattery() }">{{smartphoneRight.battery}}</td>
+          </tr>
+          <tr>
+            <td>NFC</td>
+            <td>{{smartphoneLeft.NFC}}</td>
+            <td ng-style="{ 'background-color': compareNFC() }">{{smartphoneRight.NFC}}</td>
+          </tr>
+          <tr>
+            <td>Bluetooth</td>
+            <td>{{smartphoneLeft.bluetooth}}</td>
+            <td ng-style="{ 'background-color': compareBluetooth() }">{{smartphoneRight.bluetooth}}</td>
           </tr>
         </tbody>
       </table>

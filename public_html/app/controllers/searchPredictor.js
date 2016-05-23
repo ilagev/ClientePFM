@@ -36,12 +36,12 @@ angular.module('sc').directive('autoComplete', function(RESOURCES, $window, smar
             }
         }).on('typeahead:select', function(ev, suggestion) {
             element.val(suggestion.value).change();
-            if (attributes.autoComplete === "r") { // r == redirect; nr == no redirect
+            if (attributes.autoComplete === "r") { // r == redirect; l == compare sm. left, r == compare sm. right
                 $window.location.href= "#smartphone/" + suggestion.id;
-            } else {
-                console.log(suggestion.data);
-                smartphoneService.addSmartphone(suggestion.data);
-                console.log(smartphoneService.getSmartphones());
+            } else if (attributes.autoComplete === "left") {
+                smartphoneService.setSmartphoneLeft(suggestion.data);
+            } else if (attributes.autoComplete === "right") {
+                smartphoneService.setSmartphoneRight(suggestion.data);
             }
         });
     };

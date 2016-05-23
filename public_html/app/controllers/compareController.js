@@ -1,9 +1,13 @@
 angular.module('sc').controller('compareController',
-    function($scope, smartphoneService) {
+    function($scope, $window, smartphoneService) {
+        var colorMoreThan = "Chartreuse";
+        var colorLessThan = "red";
+        var colorEquals   = "grey";
+        
         $scope.names1 = "";
         $scope.names2 = "";
         
-        $scope.smartphone1 = {
+        $scope.smartphoneLeft = {
             id: 0,
             modelName : "",
             brandName : "",
@@ -23,7 +27,7 @@ angular.module('sc').controller('compareController',
             bluetooth : false
         };
         
-        $scope.smartphone2 = {
+        $scope.smartphoneRight = {
             id: 0,
             modelName : "",
             brandName : "",
@@ -46,9 +50,111 @@ angular.module('sc').controller('compareController',
         angular.element("#comparisonTable").hide();
         
         $scope.compare = function() {
+            $scope.smartphoneLeft = smartphoneService.getSmartphoneLeft();
+            $scope.smartphoneRight = smartphoneService.getSmartphoneRight();
             angular.element("#comparisonTable").show();
-            $scope.smartphone1 = smartphoneService.getSmartphones()[0];
-            $scope.smartphone2 = smartphoneService.getSmartphones()[1];
+        };
+        
+        $scope.compareRAM = function() {
+            if ($scope.smartphoneRight.ram > $scope.smartphoneLeft.ram) {
+                return colorMoreThan;
+            } else if ($scope.smartphoneRight.ram < $scope.smartphoneLeft.ram) {
+                return colorLessThan;
+            } else {
+                return colorEquals;
+            }
+        };
+        
+        $scope.compareROM = function() {
+            if ($scope.smartphoneRight.rom > $scope.smartphoneLeft.rom) {
+                return colorMoreThan;
+            } else if ($scope.smartphoneRight.rom < $scope.smartphoneLeft.rom) {
+                return colorLessThan;
+            } else {
+                return colorEquals;
+            }
+        };
+        
+        $scope.compareScreenSize = function() {
+            if ($scope.smartphoneRight.screenSize > $scope.smartphoneLeft.screenSize) {
+                return colorMoreThan;
+            } else if ($scope.smartphoneRight.screenSize < $scope.smartphoneLeft.screenSize) {
+                return colorLessThan;
+            } else {
+                return colorEquals;
+            }
+        };
+        
+        $scope.compareResolution = function() {
+            var res1 = $scope.smartphoneLeft.resolutionX * $scope.smartphoneLeft.resolutionY;
+            var res2 = $scope.smartphoneRight.resolutionX * $scope.smartphoneRight.resolutionY;
+            if (res2 > res1) {
+                return colorMoreThan;
+            } else if (res2 < res1) {
+                return colorLessThan;
+            } else {
+                return colorEquals;
+            }
+        };
+        
+        $scope.compareBattery = function() {
+            if ($scope.smartphoneRight.battery > $scope.smartphoneLeft.battery) {
+                return colorMoreThan;
+            } else if ($scope.smartphoneRight.battery < $scope.smartphoneLeft.battery) {
+                return colorLessThan;
+            } else {
+                return colorEquals;
+            }
+        };
+        
+        $scope.compareSize = function() {
+            if ($scope.smartphoneRight.size > $scope.smartphoneLeft.size) {
+                return colorLessThan;
+            } else if ($scope.smartphoneRight.size < $scope.smartphoneLeft.size) {
+                return colorMoreThan;
+            } else {
+                return colorEquals;
+            }
+        };
+        
+        $scope.compareWeight = function() {
+            if ($scope.smartphoneRight.weight > $scope.smartphoneLeft.weight) {
+                return colorLessThan;
+            } else if ($scope.smartphoneRight.weight < $scope.smartphoneLeft.weight) {
+                return colorMoreThan;
+            } else {
+                return colorEquals;
+            }
+        };
+        
+        $scope.compareGPS = function() {
+            if ($scope.smartphoneRight.gps > $scope.smartphoneLeft.gps) {
+                return colorMoreThan;
+            } else if ($scope.smartphoneRight.gps < $scope.smartphoneLeft.gps) {
+                return colorLessThan;
+            } else {
+                return colorEquals;
+            }
+        };
+        
+        $scope.compareNFC = function() {
+            if ($scope.smartphoneRight.nfc > $scope.smartphoneLeft.nfc) {
+                return colorMoreThan;
+            } else if ($scope.smartphoneRight.nfc < $scope.smartphoneLeft.nfc) {
+                return colorLessThan;
+            } else {
+                return colorEquals;
+            }
+        };
+        
+        $scope.compareBluetooth = function() {
+            if ($scope.smartphoneRight.bluetooth > $scope.smartphoneLeft.bluetooth) {
+                return colorMoreThan;
+            } else if ($scope.smartphoneRight.bluetooth < $scope.smartphoneLeft.bluetooth) {
+                return colorLessThan;
+            } else {
+                return colorEquals;
+            }
         };
     }
 );

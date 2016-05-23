@@ -1,24 +1,27 @@
 angular.module('sc')
-        .service('smartphoneService', function() {
-        var smartphoneList = [];
+        .service('smartphoneService', function () {
+            var smartphoneLeft, smartphoneRight;
+    
+            var setSmartphoneLeft = function(s) {
+                smartphoneLeft = s;
+            };
+            
+            var setSmartphoneRight = function(s) {
+                smartphoneRight = s;
+            };
+            
+            var getSmartphoneLeft = function() {
+                return smartphoneLeft;
+            };
+            
+            var getSmartphoneRight = function() {
+                return smartphoneRight;
+            };
 
-        var addSmartphone = function(obj) {
-            if (!(obj in smartphoneList)) {
-                smartphoneList.push(obj);
-            }
-        };
-
-        var getSmartphones = function(){
-            return smartphoneList;
-        };
-        
-        var clearSmartphones = function(){
-            smartphoneList = [];
-        };
-
-        return {
-          addSmartphone: addSmartphone,
-          getSmartphones: getSmartphones,
-          clearSmartphones: clearSmartphones
-        }; 
-});
+            return {
+                setSmartphoneLeft: setSmartphoneLeft,
+                setSmartphoneRight: setSmartphoneRight,
+                getSmartphoneLeft: getSmartphoneLeft,
+                getSmartphoneRight: getSmartphoneRight
+            };
+        });
