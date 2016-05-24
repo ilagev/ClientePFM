@@ -22,8 +22,10 @@ angular.module('sc').controller('newController',
         $scope.register = function () {
             var url = RESOURCES.BASE + RESOURCES.SMARTPHONES;
             $http.post(url, $scope.phoneData)
-                .success(function(data) {
-                    $window.location.href = "#smartphone/" + data.id;
+                .then(function (response) {
+                    $window.location.href = "#smartphone/" + response.data.id;
+            }, function () {
+                alert("El smartphone ya existe");
             });
         };
     }
