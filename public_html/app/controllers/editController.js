@@ -1,5 +1,5 @@
 angular.module('sc').controller('editController',
-    function($scope, $http, RESOURCES, smartphoneService) {
+    function($scope, $http, $window, RESOURCES, smartphoneService) {
         
         var getFormattedDate = function(date) {
             var dd = date.getDate();
@@ -21,8 +21,12 @@ angular.module('sc').controller('editController',
         });
             
         $scope.edit = function () {
-            // TODO
-            console.log($scope.phoneData);
+            var id = smartphoneService.getUrlSmartphoneId();
+            var url = RESOURCES.BASE + RESOURCES.SMARTPHONES + "/" + id;
+            $http.put(url, $scope.phoneData)
+                .then(function() {
+                    $window.location.href = "#smartphone/" + id;
+            });
         };
     }
 );
