@@ -23,12 +23,27 @@
       </li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown">
-          Menú de usuario<b class="caret"></b>
+          Iniciar sesión<b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="#">Perfil</a></li>
-          <li><a href="#">Contribuciones</a></li>
-          <li><a href="#">Cerrar sesión</a></li>
+          <li ng-controller="loginController">
+            <form class="form-vertical" role="form">
+
+                <div class="form-group">
+                  <label for="nick">Usuario: </label>
+                  <input type="text" class="form-control" required id="nick" ng-model="nick" placeholder="Usuario">
+                </div>
+
+                <div class="form-group">
+                  <label for="pwd">Password</label>         
+                  <input type="text" class="form-control" required id="pwd" ng-model="pwd" placeholder="Contraseña">
+                </div>
+                
+                <button class="button button-icon" ng-click="login()">Entrar</button>
+
+            </form> 
+          </li>
+          <li><a href="#">Registro de usuario</a></li>
         </ul>
       </li>
     </ul>

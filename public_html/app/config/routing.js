@@ -1,4 +1,4 @@
-angular.module('sc').config(function($routeProvider) {
+angular.module('sc').config(function($routeProvider, $httpProvider) {
 
     $routeProvider
         .when('/new', {
@@ -20,4 +20,8 @@ angular.module('sc').config(function($routeProvider) {
         .otherwise({
             redirectTo : '/compare'
         });
+        
+        /*$httpProvider.defaults.withCredentials = true;
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];*/
 });
