@@ -17,6 +17,10 @@ angular.module('sc').config(function($routeProvider, $httpProvider) {
             templateUrl : 'app/views/edit.html',
             controller  : 'editController'
         })
+        .when('/profile',{
+            templateUrl : 'app/views/profile.html',
+            controller  : 'profileController'
+        })
         .otherwise({
             redirectTo : '/compare'
         });

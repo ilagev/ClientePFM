@@ -18,7 +18,7 @@ angular.module('sc')
         };
         
         var authHeader = function(user, pwd) {
-            if (user !== null && pwd !== null) {
+            if (!isAuthenticated()) {
                 return "Basic " + btoa(user + ":" + pwd);
             } else {
                 return "Basic " + btoa(this.getToken() + ":");
