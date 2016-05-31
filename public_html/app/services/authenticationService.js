@@ -1,35 +1,34 @@
 angular.module('sc')
-    .service('authenticationService', function () {
-        var token;
+    .service('authenticationService', function ($window) {
 
         var setToken = function(t) {
-            token = t;
+            $window.localStorage.setItem('token', t);
         };
             
         var getToken = function() {
-            return token;
+            return $window.localStorage.getItem('token');
         };
             
-        var deleteToken = function() {
-            token = "";
+        var removeToken = function() {
+            $window.localStorage.removeItem('token');
         };
 
         var isAuthenticated = function() {
-            return token !== "";
+            return $window.localStorage.getItem('token') !== null;
         };
         
         var authHeader = function(user, pwd) {
             if (user !== null && pwd !== null) {
                 return "Basic " + btoa(user + ":" + pwd);
             } else {
-                return "Basic " + btoa(token + ":");
+                return "Basic " + btoa(this.getToken() + ":");
             }
         };
 
         return {
             setToken: setToken,
             getToken: getToken,
-            removeToken: deleteToken,
+            removeToken: removeToken,
             isUserAuthenticated: isAuthenticated,
             authHeader: authHeader
         };

@@ -1,5 +1,5 @@
 angular.module('sc').controller('compareController',
-    function($scope, $window, smartphoneService) {
+    function($scope, smartphoneService) {
         var colorMoreThan = "Chartreuse";
         var colorLessThan = "red";
         var colorEquals   = "grey";
