@@ -1,5 +1,5 @@
 angular.module('sc').controller('loginController',
-    function($scope, $http, RESOURCES, authenticationService) {
+    function($scope, authenticationService) {
         
         $scope.nick = "";
         $scope.pwd = "";
@@ -15,18 +15,7 @@ angular.module('sc').controller('loginController',
         }
         
         $scope.login = function() {
-            var url = RESOURCES.BASE + RESOURCES.TOKENS;
-            $http.post(url, null, {
-                headers: {
-                    Authorization: authenticationService.authHeader($scope.nick, $scope.pwd)
-                }
-            }).then(function (response) {
-                console.log("Token = " + response.data.token);
-                authenticationService.setToken(response.data.token);
-                location.reload();
-            }, function (response) {
-                console.log(response);
-            });
+            authenticationService.login($scope.nick, $scope.pwd);
         };
         
         $scope.logout = function() {

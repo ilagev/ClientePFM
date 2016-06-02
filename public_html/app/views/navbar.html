@@ -27,7 +27,7 @@
         </a>
         <ul class="dropdown-menu">
           <li>
-            <form class="form-vertical" role="form">
+              <form class="form-vertical" role="form" ng-submit="login()">
 
                 <div class="form-group">
                   <label for="nick">Usuario: </label>
@@ -39,11 +39,11 @@
                   <input type="password" class="form-control" required id="pwd" ng-model="pwd" placeholder="Contraseña">
                 </div>
                 
-                <button class="button button-icon" ng-click="login()">Entrar</button>
+                <input type="submit" value="Entrar">
 
             </form> 
           </li>
-          <li><a href="#">Registro de usuario</a></li>
+          <li><a href="#register">Registro de usuario</a></li>
         </ul>
       </li>
       

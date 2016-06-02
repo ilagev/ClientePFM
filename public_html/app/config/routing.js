@@ -21,6 +21,10 @@ angular.module('sc').config(function($routeProvider, $httpProvider) {
             templateUrl : 'app/views/profile.html',
             controller  : 'profileController'
         })
+        .when('/register',{
+            templateUrl : 'app/views/register.html',
+            controller  : 'registerController'
+        })
         .otherwise({
             redirectTo : '/compare'
         });

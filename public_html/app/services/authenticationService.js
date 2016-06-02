@@ -1,5 +1,5 @@
 angular.module('sc')
-    .service('authenticationService', function ($window) {
+    .service('authenticationService', function ($window, RESOURCES, $http) {
 
         var setToken = function(t) {
             $window.localStorage.setItem('token', t);
@@ -24,13 +24,29 @@ angular.module('sc')
                 return "Basic " + btoa(this.getToken() + ":");
             }
         };
+        
+        var login = function(nick, pwd) {
+            var url = RESOURCES.BASE + RESOURCES.TOKENS;
+            $http.post(url, null, {
+                headers: {
+                    Authorization: authHeader(nick, pwd)
+                }
+            }).then(function (response) {
+                console.log("Token = " + response.data.token);
+                setToken(response.data.token);
+                location.reload();
+            }, function (response) {
+                console.log(response);
+            });
+        };
 
         return {
             setToken: setToken,
             getToken: getToken,
             removeToken: removeToken,
             isUserAuthenticated: isAuthenticated,
-            authHeader: authHeader
+            authHeader: authHeader,
+            login: login
         };
     }
 );
