@@ -1,6 +1,18 @@
 angular.module('sc')
     .service('authenticationService', function ($window, RESOURCES, $http) {
 
+        var setNick = function(nick) {
+            $window.localStorage.setItem('nick', nick);
+        };
+        
+        var getNick = function() {
+            return $window.localStorage.getItem('nick');
+        };
+        
+        var removeNick = function() {
+            $window.localStorage.removeItem('nick');
+        };
+
         var setToken = function(t) {
             $window.localStorage.setItem('token', t);
         };
@@ -46,7 +58,10 @@ angular.module('sc')
             removeToken: removeToken,
             isUserAuthenticated: isAuthenticated,
             authHeader: authHeader,
-            login: login
+            login: login,
+            setNick: setNick,
+            getNick: getNick,
+            removeNick: removeNick
         };
     }
 );
