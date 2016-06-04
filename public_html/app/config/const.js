@@ -3,5 +3,6 @@ angular.module('sc').constant('RESOURCES', {
     SMARTPHONES: '/smartphones',
     TOKENS: '/tokens',
     USERS: '/users',
-    LOGGED_IN: '/loggedin'
+    LOGGED_IN: '/loggedin',
+    PASSWORD: '/password'
 }); 

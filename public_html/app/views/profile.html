@@ -12,14 +12,8 @@
 </dl>
 
 <h3>Cambiar contraseña</h3>
-<form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label class="control-label col-md-2" for="old">Actual contraseña</label>
-      <div class="col-md-10">
-        <input type="password" class="form-control" required ng-model="old" id="old" placeholder="Contraseña actual">
-      </div>
-    </div>
-    
+<form class="form-horizontal" role="form" ng-submit="edit()">
+ 
     <div class="form-group">
       <label class="control-label col-md-2" for="new">Nueva contraseña</label>
       <div class="col-md-10">
@@ -36,7 +30,7 @@
     
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button class="button button-icon" ng-click="edit()">Guardar</button>
+            <input type="submit" value="Guardar">
         </div>
     </div>
 </form>

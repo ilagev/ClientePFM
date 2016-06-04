@@ -33,9 +33,11 @@ angular.module('sc').controller('registerController',
                     mail: ($scope.user.mail !== null) ? $scope.user.mail : ""
                 }
             }).then(function(response) {
-                if (response.data === "true") {
+                if (response.data.nick) {
                     alert("El usuario ya existe!!!");
                 }
+            }, function() {
+                // user does not exist, it's OK
             });
         };
     }

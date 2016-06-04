@@ -1,5 +1,5 @@
 <h2>Registro de smartphone</h2>
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" ng-submit="register()">
     
     <div class="form-group">
       <label class="control-label col-md-2" for="brandName">Marca:</label>
@@ -25,58 +25,58 @@
     <div class="form-group">
       <label class="control-label col-md-2" for="screenSize">Tama&nacuteo de pantalla:</label>
       <div class="col-md-10">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.screenSize" id="screenSize" placeholder="Introduzca tamaño de pantalla">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.screenSize" id="screenSize" placeholder="Introduzca tamaño de pantalla">
       </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-md-2" for="resolution">Resolucion de pantalla:</label>
       <div class="col-md-5">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.resolutionX" id="resolution" placeholder="Lineas">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.resolutionX" id="resolution" placeholder="Lineas">
       </div>
       <div class="col-md-5">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.resolutionY" id="resolution" placeholder="Columnas">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.resolutionY" id="resolution" placeholder="Columnas">
       </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-md-2" for="rom">ROM:</label>
       <div class="col-md-10">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.rom" id="rom" placeholder="Introduzca cantidad de ROM">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.rom" id="rom" placeholder="Introduzca cantidad de ROM">
       </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-md-2" for="ram">RAM:</label>
       <div class="col-md-10">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.ram" id="ram" placeholder="Introduzca cantidad de RAM">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.ram" id="ram" placeholder="Introduzca cantidad de RAM">
       </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-md-2" for="battery">Bater&iacute;a:</label>
       <div class="col-md-10">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.battery" id="battery" placeholder="Introduzca cantidad de bateria">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.battery" id="battery" placeholder="Introduzca cantidad de bateria">
       </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-md-2" for="weight">Peso:</label>
       <div class="col-md-10">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.weight" id="weight" placeholder="Introduzca peso">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.weight" id="weight" placeholder="Introduzca peso">
       </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-md-2" for="dimensions">Dimensiones:</label>
       <div class="col-md-3">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.height" id="dimensions" placeholder="Altura">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.height" id="dimensions" placeholder="Altura">
       </div>
       <div class="col-md-3">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.width" id="dimensions" placeholder="Anchura">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.width" id="dimensions" placeholder="Anchura">
       </div>
       <div class="col-md-3">
-        <input type="number" step="0.01" class="form-control" required ng-model="phoneData.thickness" id="dimensions" placeholder="Grosor">
+        <input type="number" step="0.01" min="0" class="form-control" required ng-model="phoneData.thickness" id="dimensions" placeholder="Grosor">
       </div>
     </div>
     
@@ -103,7 +103,7 @@
     
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button class="button button-icon" ng-click="register()">Guardar</button>
+            <input type="submit" value="Guardar">
         </div>
     </div>
 
