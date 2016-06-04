@@ -1,5 +1,22 @@
 angular.module('sc').controller('smartphoneController',
-    function($scope, $http, $window, RESOURCES, smartphoneService) {
+    function($scope, $http, $window, RESOURCES, smartphoneService, authenticationService) {
+        
+        angular.element("#edit").hide();
+        angular.element("#delete").hide();
+        
+        if (authenticationService.isAuthenticated()) {
+            
+            if (authenticationService.getRole() === null) {
+                authenticationService.fetchUserData();
+            }
+            console.log(authenticationService.getRole());
+            if (authenticationService.getRole() === "ROLE_ADMIN") {
+                angular.element("#edit").show();
+                angular.element("#delete").show();
+            } else if (authenticationService.getRole() === "ROLE_MODERATOR") {
+                angular.element("#edit").show();
+            }
+        }
         
         var url = RESOURCES.BASE + RESOURCES.SMARTPHONES + "/" + smartphoneService.getUrlSmartphoneId();
         $http.get(url).then(function (response) {

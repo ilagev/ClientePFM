@@ -4,18 +4,14 @@ angular.module('sc').controller('profileController',
         $scope.new = "";
         $scope.newrep = "";
         
-        var getUser = function() {
-            var url = RESOURCES.BASE + RESOURCES.USERS + RESOURCES.LOGGED_IN;
-            $http.get(url, {
-                headers: {
-                    Authorization: authenticationService.authHeader()
-                }
-            }).then(function (response) {
-                $scope.user = response.data;
-            });
-        };
-        
-        getUser();
+        var url = RESOURCES.BASE + RESOURCES.USERS + RESOURCES.LOGGED_IN;
+        $http.get(url, {
+            headers: {
+                Authorization: authenticationService.authHeader()
+            }
+        }).then(function (response) {
+            $scope.user = response.data;
+        });
         
         $scope.edit = function() {
             

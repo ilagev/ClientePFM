@@ -1,39 +1,51 @@
 angular.module('sc')
     .service('authenticationService', function ($window, RESOURCES, $http) {
 
-        var setNick = function(nick) {
-            $window.localStorage.setItem('nick', nick);
-        };
-        
-        var getNick = function() {
-            return $window.localStorage.getItem('nick');
-        };
-        
-        var removeNick = function() {
-            $window.localStorage.removeItem('nick');
-        };
-
         var setToken = function(t) {
-            $window.localStorage.setItem('token', t);
+            $window.sessionStorage.setItem('token', t);
         };
             
         var getToken = function() {
-            return $window.localStorage.getItem('token');
+            return $window.sessionStorage.getItem('token');
         };
             
         var removeToken = function() {
-            $window.localStorage.removeItem('token');
+            $window.sessionStorage.removeItem('token');
+        };
+        
+        var setUser = function(u) {
+            $window.sessionStorage.setItem('user', u);
+        };
+            
+        var getUser = function() {
+            return $window.sessionStorage.getItem('user');
+        };
+            
+        var removeUser = function() {
+            $window.sessionStorage.removeItem('user');
+        };
+        
+        var setRole = function(r) {
+            $window.sessionStorage.setItem('role', r);
+        };
+            
+        var getRole = function() {
+            return $window.sessionStorage.getItem('role');
+        };
+            
+        var removeRole = function() {
+            $window.sessionStorage.removeItem('role');
         };
 
         var isAuthenticated = function() {
-            return $window.localStorage.getItem('token') !== null;
+            return $window.sessionStorage.getItem('token') !== null;
         };
         
         var authHeader = function(user, pwd) {
             if (!isAuthenticated()) {
                 return "Basic " + btoa(user + ":" + pwd);
             } else {
-                return "Basic " + btoa(this.getToken() + ":");
+                return "Basic " + btoa(getToken() + ":");
             }
         };
         
@@ -44,24 +56,41 @@ angular.module('sc')
                     Authorization: authHeader(nick, pwd)
                 }
             }).then(function (response) {
-                console.log("Token = " + response.data.token);
                 setToken(response.data.token);
+                setUser(nick);
                 location.reload();
             }, function (response) {
                 console.log(response);
             });
         };
-
+        
+        var logout = function() {
+            removeToken();
+            removeUser();
+            removeRole();
+            location.reload();
+        };
+        
+        var fetchUserData = function() {
+            var url = RESOURCES.BASE + RESOURCES.USERS + RESOURCES.LOGGED_IN;
+            $http.get(url, {
+                headers: {
+                    Authorization: authHeader()
+                }
+            }).then(function (response) {
+                setRole(response.data.role);
+                location.reload();
+            });
+        };
+                
         return {
-            setToken: setToken,
-            getToken: getToken,
-            removeToken: removeToken,
-            isUserAuthenticated: isAuthenticated,
+            isAuthenticated: isAuthenticated,
             authHeader: authHeader,
             login: login,
-            setNick: setNick,
-            getNick: getNick,
-            removeNick: removeNick
+            logout: logout,
+            getUser: getUser,
+            getRole: getRole,
+            fetchUserData: fetchUserData
         };
     }
 );
