@@ -59,8 +59,8 @@ angular.module('sc')
                 setToken(response.data.token);
                 setUser(nick);
                 location.reload();
-            }, function (response) {
-                console.log(response);
+            }, function () {
+                alert("Login no valido");
             });
         };
         
