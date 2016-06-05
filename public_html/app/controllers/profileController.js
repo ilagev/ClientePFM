@@ -10,6 +10,7 @@ angular.module('sc').controller('profileController',
                 Authorization: authenticationService.authHeader()
             }
         }).then(function (response) {
+            console.log(response.data);
             $scope.user = response.data;
         });
         

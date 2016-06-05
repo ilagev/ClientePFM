@@ -3,13 +3,16 @@ angular.module('sc').controller('smartphoneController',
         
         angular.element("#edit").hide();
         angular.element("#delete").hide();
+        angular.element("#fav").hide();
         
         if (authenticationService.isAuthenticated()) {
+            
+            angular.element("#fav").show();
             
             if (authenticationService.getRole() === null) {
                 authenticationService.fetchUserData();
             }
-            console.log(authenticationService.getRole());
+            
             if (authenticationService.getRole() === "ROLE_ADMIN") {
                 angular.element("#edit").show();
                 angular.element("#delete").show();
@@ -36,6 +39,17 @@ angular.module('sc').controller('smartphoneController',
                 }, function () {
                     alert("El smartphone no existe");
                 });
+        };
+        
+        $scope.addToProfile = function() {
+            var url = RESOURCES.BASE + RESOURCES.USERS + RESOURCES.LOGGED_IN + RESOURCES.SMARTPHONE;
+            $http.put(url, {id: $scope.smartphone.id}, {
+                headers: {
+                    Authorization: authenticationService.authHeader()
+                }
+            }).then(function () {
+                alert($scope.smartphone.brandName + " " + $scope.smartphone.modelName + " añadido al perfil");
+            });
         };
     }
 );
