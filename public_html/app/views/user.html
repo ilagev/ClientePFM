@@ -1,0 +1,31 @@
+<dl class="dl-horizontal">
+    <dt>Nick</dt>
+    <dd>{{user.nick}}</dd>
+    <dt>Rango</dt>
+    <dd>{{user.role}}</dd>
+    <dt>Nivel</dt>
+    <dd>{{user.level}}</dd>
+    <dt>Karma</dt>
+    <dd>{{user.karma}}</dd>
+</dl>
+
+<button ng-click="showContributions()">Ver contribuciones</button>
+<div class="container" id="contributions">
+    <h2>Resultados</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Ver ficha</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="smartphone in smartphones">
+            <tr>
+                <td>{{smartphone.brandName}}</td>
+                <td>{{smartphone.modelName}}</td>
+                <td><a href="#smartphone/{{smartphone.id}}">Ver ficha</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

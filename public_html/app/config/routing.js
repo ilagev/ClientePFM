@@ -1,4 +1,4 @@
-angular.module('sc').config(function($routeProvider, $httpProvider) {
+angular.module('sc').config(function($routeProvider) {
 
     $routeProvider
         .when('/new', {
@@ -8,6 +8,10 @@ angular.module('sc').config(function($routeProvider, $httpProvider) {
         .when('/smartphone/:id',{
             templateUrl : 'app/views/smartphone.html',
             controller  : 'smartphoneController'
+        })
+        .when('/user/:id',{
+            templateUrl : 'app/views/user.html',
+            controller  : 'userController'
         })
         .when('/compare',{
             templateUrl : 'app/views/compare.html',
@@ -29,7 +33,4 @@ angular.module('sc').config(function($routeProvider, $httpProvider) {
             redirectTo : '/compare'
         });
         
-        /*$httpProvider.defaults.withCredentials = true;
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];*/
 });
