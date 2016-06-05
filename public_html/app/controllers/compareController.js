@@ -1,5 +1,5 @@
 angular.module('sc').controller('compareController',
-    function($scope, smartphoneService) {
+    function($scope, smartphoneService, authenticationService, $http, RESOURCES) {
         var colorMoreThan = "Chartreuse";
         var colorLessThan = "red";
         var colorEquals   = "grey";
@@ -48,11 +48,31 @@ angular.module('sc').controller('compareController',
         };
         
         angular.element("#comparisonTable").hide();
+        angular.element("#myphone").hide();
+        
+        if (authenticationService.isAuthenticated()) {
+            angular.element("#myphone").show();
+        }
         
         $scope.compare = function() {
             $scope.smartphoneLeft = smartphoneService.getSmartphoneLeft();
             $scope.smartphoneRight = smartphoneService.getSmartphoneRight();
             angular.element("#comparisonTable").show();
+        };
+        
+        $scope.compareToMine = function() {
+            var url = RESOURCES.BASE + RESOURCES.USERS + RESOURCES.LOGGED_IN + RESOURCES.SMARTPHONE;
+            $http.get(url, {
+                headers: {
+                    Authorization: authenticationService.authHeader()
+                }
+            }).then(function (response) {
+                if (response.data.modelName !== undefined) {
+                    $scope.smartphoneLeft = response.data;
+                } else {
+                    alert("No tienes ningún móvil asignado...");
+                }
+            });
         };
         
         $scope.compareRAM = function() {
