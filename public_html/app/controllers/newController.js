@@ -1,5 +1,5 @@
 angular.module('sc').controller('newController',
-    function($scope, $http, RESOURCES, $window) {
+    function($scope, $http, RESOURCES, $window, authenticationService) {
         $scope.phoneData = {
             modelName : "",
             brandName : "",
@@ -21,8 +21,11 @@ angular.module('sc').controller('newController',
         
         $scope.register = function () {
             var url = RESOURCES.BASE + RESOURCES.SMARTPHONES;
-            $http.post(url, $scope.phoneData)
-                .then(function (response) {
+            $http.post(url, $scope.phoneData, {
+                headers: {
+                    Authorization: authenticationService.authHeader()
+                }
+            }).then(function (response) {
                     $window.location.href = "#smartphone/" + response.data.id;
             }, function () {
                 alert("El smartphone ya existe");
