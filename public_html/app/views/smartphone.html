@@ -1,33 +1,57 @@
-<dl class="dl-horizontal">
-    <dt>Brand</dt>
-    <dd>{{smartphone.brandName}}</dd>
-    <dt>Model</dt>
-    <dd>{{smartphone.modelName}}</dd>
-    <dt>Release date</dt>
-    <dd>{{smartphone.releaseDate}}</dd>
-    <dt>Screen size</dt>
-    <dd>{{smartphone.screenSize}}</dd>
-    <dt>Resolution</dt>
-    <dd>{{smartphone.resolutionX}} x {{smartphone.resolutionY}}</dd>
-    <dt>RAM</dt>
-    <dd>{{smartphone.ram}}</dd>
-    <dt>ROM</dt>
-    <dd>{{smartphone.rom}}</dd>
-    <dt>Battery</dt>
-    <dd>{{smartphone.battery}}</dd>
-    <dt>Weight</dt>
-    <dd>{{smartphone.weight}}</dd>
-    <dt>Size</dt>
-    <dd>{{smartphone.height}} x {{smartphone.width}} x {{smartphone.thickness}}</dd>
-    <dt>GPS</dt>
-    <dd>{{smartphone.gps}}</dd>
-    <dt>NFC</dt>
-    <dd>{{smartphone.nfc}}</dd>
-    <dt>Bluetooth</dt>
-    <dd>{{smartphone.bluetooth}}</dd>
-</dl>
+<div class="col-md-4">
+    <dl class="dl-horizontal">
+        <dt>Brand</dt>
+        <dd>{{smartphone.brandName}}</dd>
+        <dt>Model</dt>
+        <dd>{{smartphone.modelName}}</dd>
+        <dt>Release date</dt>
+        <dd>{{smartphone.releaseDate}}</dd>
+        <dt>Screen size</dt>
+        <dd>{{smartphone.screenSize}}</dd>
+        <dt>Resolution</dt>
+        <dd>{{smartphone.resolutionX}} x {{smartphone.resolutionY}}</dd>
+        <dt>RAM</dt>
+        <dd>{{smartphone.ram}}</dd>
+        <dt>ROM</dt>
+        <dd>{{smartphone.rom}}</dd>
+        <dt>Battery</dt>
+        <dd>{{smartphone.battery}}</dd>
+        <dt>Weight</dt>
+        <dd>{{smartphone.weight}}</dd>
+        <dt>Size</dt>
+        <dd>{{smartphone.height}} x {{smartphone.width}} x {{smartphone.thickness}}</dd>
+        <dt>GPS</dt>
+        <dd>{{smartphone.gps}}</dd>
+        <dt>NFC</dt>
+        <dd>{{smartphone.nfc}}</dd>
+        <dt>Bluetooth</dt>
+        <dd>{{smartphone.bluetooth}}</dd>
+        <dt>Usuario creador</dt>
+        <dd><a href="#user/{{smartphone.creatorID}}">{{smartphone.creatorNick}}</a></dd>
+    </dl>
 
-<h2 id="edit"><a href="#edit/{{smartphone.id}}">Editar ficha</a></h2>
-<button id="delete" class="button button-icon" ng-click="deleteSmartphone()">Borrar</button>
-<h3 id="creator">Creador: <a href="#user/{{smartphone.creatorID}}">{{smartphone.creatorNick}}</a></h3>
-<button id="fav" class="button button-icon" ng-click="addToProfile()">Añadir al perfil</button>
+    <div>
+        <button id="edit" ng-click="editSmartphone()">Editar ficha</button>
+        <button id="delete" class="button button-icon" ng-click="deleteSmartphone()">Borrar ficha</button>
+        <button id="fav" class="button button-icon" ng-click="addToProfile()">Añadir al perfil</button>
+    </div>
+</div>
+<div class="col-md-6">
+    <h2>Análisis de los usuarios</h2>
+    <form ng-submit="postReview()" id="addReviewForm">
+        <textarea ng-model="review.text" cols="25" class="form-control" rows="10" placeholder="Añade tus impresiones"></textarea>
+        <br>
+        <label class="col-md-3">Nota (1-10): </label>
+        <input type="number" step="1" max="10" min="1" class="col-md-4" ng-model="review.mark"/>
+        <input type="submit" value="Publicar" class="col-md-3"/>
+    </form>
+    
+    <button ng-click="showContributions()">Ver comentarios</button>
+    <div class="container" id="reviews">
+        <div ng-repeat="review in reviews">
+            <h5>El día {{review.date}}, <a href="#user/{{review.userId}}">{{review.user}}</a> puntuó a este modelo con un <b>{{review.mark}}/10</b>. Éstas fueron sus impresiones:</h5>
+            <p><i>"{{review.text}}"</i></p>
+            <hr>
+        </div>
+    </div>
+</div>

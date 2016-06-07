@@ -5,5 +5,6 @@ angular.module('sc').constant('RESOURCES', {
     TOKENS: '/tokens',
     USERS: '/users',
     LOGGED_IN: '/loggedin',
-    PASSWORD: '/password'
+    PASSWORD: '/password',
+    REVIEWS: '/reviews'
 }); 

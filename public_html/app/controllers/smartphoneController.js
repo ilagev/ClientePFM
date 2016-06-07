@@ -4,10 +4,13 @@ angular.module('sc').controller('smartphoneController',
         angular.element("#edit").hide();
         angular.element("#delete").hide();
         angular.element("#fav").hide();
+        angular.element("#addReviewForm").hide();
+        angular.element("#reviews").hide();
         
         if (authenticationService.isAuthenticated()) {
             
             angular.element("#fav").show();
+            angular.element("#addReviewForm").show();
             
             if (authenticationService.getRole() === null) {
                 authenticationService.fetchUserData();
@@ -26,7 +29,7 @@ angular.module('sc').controller('smartphoneController',
             $scope.smartphone = response.data;
             $scope.smartphone.releaseDate = smartphoneService.getFormattedDate(new Date($scope.smartphone.releaseDate));
         }, function () {
-            alert("El snartphone no existe");
+            alert("El smartphone no existe");
         });
         
         $scope.deleteSmartphone = function() {
@@ -49,6 +52,27 @@ angular.module('sc').controller('smartphoneController',
                 }
             }).then(function () {
                 alert($scope.smartphone.brandName + " " + $scope.smartphone.modelName + " añadido al perfil");
+            });
+        };
+        
+        $scope.editSmartphone = function() {
+            $window.location.href = "#edit/" + $scope.smartphone.id;
+        };
+        
+        $scope.postReview = function() {
+            console.log("coming soon");
+        };
+        
+        $scope.showContributions = function() {
+            angular.element("#reviews").show();
+            var url = RESOURCES.BASE + RESOURCES.SMARTPHONES + "/" + smartphoneService.getUrlSmartphoneId() + RESOURCES.REVIEWS;
+            $http.get(url).then(function (response) {
+                $scope.reviews = response.data;
+                for (var i = 0; i < $scope.reviews.length; i++) {
+                    $scope.reviews[i].date = smartphoneService.getFormattedDate(new Date($scope.reviews[i].date));
+                }
+            }, function () {
+                alert("El smartphone no existe");
             });
         };
     }
