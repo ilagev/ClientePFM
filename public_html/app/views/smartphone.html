@@ -48,9 +48,10 @@
     
     <button ng-click="showContributions()">Ver comentarios</button>
     <div class="container" id="reviews">
-        <div ng-repeat="review in reviews">
+        <div ng-repeat="review in reviews" id="review_{{review.id}}">
             <h5>El día {{review.date}}, <a href="#user/{{review.userId}}">{{review.user}}</a> puntuó a este modelo con un <b>{{review.mark}}/10</b>. Éstas fueron sus impresiones:</h5>
             <p><i>"{{review.text}}"</i></p>
+            <button ng-click="deleteReview(review.id)" ng-style="{'visibility': mustShow()}">Borrar comentario</button>
             <hr>
         </div>
     </div>

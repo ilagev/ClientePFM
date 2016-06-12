@@ -60,7 +60,15 @@ angular.module('sc').controller('smartphoneController',
         };
         
         $scope.postReview = function() {
-            console.log("coming soon");
+            var url = RESOURCES.BASE + RESOURCES.REVIEWS;
+            $scope.review.smartphoneId = smartphoneService.getUrlSmartphoneId();
+            $http.post(url, $scope.review, {
+                headers: {
+                    Authorization: authenticationService.authHeader()
+                }
+            }).then(function () {
+                location.reload();
+            });
         };
         
         $scope.showContributions = function() {
@@ -74,6 +82,20 @@ angular.module('sc').controller('smartphoneController',
             }, function () {
                 alert("El smartphone no existe");
             });
+        };
+        
+        $scope.deleteReview = function(id) {
+            var url = RESOURCES.BASE + RESOURCES.REVIEWS + "/" + id;
+            $http.delete(url).then(function () {
+                var elem = angular.element(document.querySelector('#review_' + id));
+                elem.remove();
+                alert("Review borrada");
+            });
+        };
+        
+        $scope.mustShow = function() {
+            return (authenticationService.getRole() === "ROLE_MODERATOR" ||
+                    authenticationService.getRole() === "ROLE_ADMIN") ? "visible" : "hidden";
         };
     }
 );
