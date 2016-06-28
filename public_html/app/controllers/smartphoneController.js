@@ -77,9 +77,13 @@ angular.module('sc').controller('smartphoneController',
             angular.element("#reviews").show();
             var url = RESOURCES.BASE + RESOURCES.SMARTPHONES + "/" + smartphoneService.getUrlSmartphoneId() + RESOURCES.REVIEWS;
             $http.get(url).then(function (response) {
-                $scope.reviews = response.data;
-                for (var i = 0; i < $scope.reviews.length; i++) {
-                    $scope.reviews[i].date = smartphoneService.getFormattedDate(new Date($scope.reviews[i].date));
+                if (response.data.length > 0) {
+                    $scope.reviews = response.data;
+                    for (var i = 0; i < $scope.reviews.length; i++) {
+                        $scope.reviews[i].date = smartphoneService.getFormattedDate(new Date($scope.reviews[i].date));
+                    }
+                } else {
+                    alert("No hay comentarios");
                 }
             }, function () {
                 alert("El smartphone no existe");

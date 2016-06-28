@@ -14,7 +14,11 @@ angular.module('sc').controller('userController',
             angular.element("#contributions").show();
             var url = RESOURCES.BASE + RESOURCES.USERS + "/" + $scope.user.id + RESOURCES.SMARTPHONES;
             $http.get(url).then(function (response) {
-                $scope.smartphones = response.data;
+                if (response.data.length > 0) {
+                    $scope.smartphones = response.data;
+                } else {
+                    alert("No hay contribuciones");
+                }
             });
         };
         
