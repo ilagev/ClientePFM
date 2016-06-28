@@ -33,15 +33,17 @@ angular.module('sc').controller('smartphoneController',
         });
         
         $scope.deleteSmartphone = function() {
-            var name = $scope.smartphone.brandName + " " + $scope.smartphone.modelName;
-            var url = RESOURCES.BASE + RESOURCES.SMARTPHONES + "/" + smartphoneService.getUrlSmartphoneId();
-            $http.delete(url)
-                .then(function () {
-                    alert(name + " borrado");
-                    $window.location.href = "#compare";
-                }, function () {
-                    alert("El smartphone no existe");
-                });
+            if (confirm("Seguro que quieres borrar este smartphone?")) {
+                var name = $scope.smartphone.brandName + " " + $scope.smartphone.modelName;
+                var url = RESOURCES.BASE + RESOURCES.SMARTPHONES + "/" + smartphoneService.getUrlSmartphoneId();
+                $http.delete(url)
+                    .then(function () {
+                        alert(name + " borrado");
+                        $window.location.href = "#compare";
+                    }, function () {
+                        alert("El smartphone no existe");
+                    });
+            }
         };
         
         $scope.addToProfile = function() {
@@ -85,12 +87,14 @@ angular.module('sc').controller('smartphoneController',
         };
         
         $scope.deleteReview = function(id) {
-            var url = RESOURCES.BASE + RESOURCES.REVIEWS + "/" + id;
-            $http.delete(url).then(function () {
-                var elem = angular.element(document.querySelector('#review_' + id));
-                elem.remove();
-                alert("Review borrada");
-            });
+            if (confirm("Seguro que quieres borrar este analisis?")) {
+                var url = RESOURCES.BASE + RESOURCES.REVIEWS + "/" + id;
+                $http.delete(url).then(function () {
+                    var elem = angular.element(document.querySelector('#review_' + id));
+                    elem.remove();
+                    alert("Review borrada");
+                });
+            }
         };
         
         $scope.mustShow = function() {
